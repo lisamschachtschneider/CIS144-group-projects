@@ -25,21 +25,10 @@ public class ReversingDigits {
         int result = 0;
         
         while(number != 0) {
-//            System.out.printf("reverse method is calculating %d%n", number);
             int removeLast = number % 10; // remove the last digit to add later
-//            System.out.printf("number after number percentile 10: %d%n", number);
-//            System.out.printf("removeLast after number percentile 10: %d%n", removeLast);
-
-
             number = number / 10; // remove the rightmost number and round down
-//            System.out.printf("number after number divided by 10: %d%n", number);
-//            System.out.printf("result: %d%n", result);
-
-
             result = result * 10 + removeLast; // store digits as they accumulate
-//            System.out.printf("reverse removeLast %d%n", removeLast);
-//            System.out.printf("number after removeLast %d%n", number);
-//            System.out.printf("RETURN result is: %d%n", result);
+
         }
         return result;    
     }
