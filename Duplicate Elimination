@@ -12,14 +12,30 @@ public class DuplicateElimination {
 	do
 	{
 		System.out.println("Enter a number between 10-100: ");
-		firstNumber=input.nextInt();
+		try
+		{
+			firstNumber=input.nextInt();
+		}
+		catch(InputMismatchException e)
+		{
+			System.out.println("Invalid Input");
+			input.next();
+		}
 	}
 	while(!(firstNumber>=10 && firstNumber<=100));
 	System.out.println(""+firstNumber);
 	do
 	{
 		System.out.println("Enter another number between 10-100: ");
-		number = input.nextInt();
+		try
+		{
+			number=input.nextInt();
+		}
+		catch(InputMismatchException e)
+		{
+			System.out.println("Invalid Input");
+			input.next();
+		}
 	}
 	while(!(number>=10 && number<=100));
 	
@@ -61,7 +77,15 @@ public class DuplicateElimination {
 			do
 			{
 				System.out.println("Enter another number between 10-100: ");
-				number = input.nextInt();
+				try
+				{
+					number=input.nextInt();
+				}
+				catch(InputMismatchException e)
+				{
+					System.out.println("Invalid Input");
+					input.next();
+				}
 			}while(!(number>=10 && number<=100));
 		}
 	}
