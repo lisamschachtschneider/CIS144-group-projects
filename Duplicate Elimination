@@ -1,3 +1,4 @@
+/*
 import java.util.*;
 
 public class DuplicateElimination {
@@ -117,3 +118,64 @@ public class DuplicateElimination {
 	}
 
 }
+
+*/
+
+
+-------------------------------------------------------------------------------------------------
+second version 
+//group project 5
+
+import java.util.*;
+
+public class GroupProject5 {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+
+		int Case[] = new int[5];
+		int count = 0;
+		int num = 0;
+		int value = 0;
+		while (num < Case.length) {
+			System.out.println("Enter a number between 10 to 100! repeat number will not be shown: ");
+			value = input.nextInt();
+
+			if ((value >= 10) && (value <= 100)) {
+				boolean digit = false;
+				num++;
+
+				for (int i = 0; i < Case.length; i++) {
+					if (Case[i] == value)
+						digit = true;
+				}
+
+				if (!digit) {
+
+					Case[count] = value;
+
+					count++;
+
+				}
+
+				else
+
+					System.out.println("the number you have entered was used before");
+
+			}
+
+			else
+				System.out.println("the number you enter must be between 10 and 100");
+
+			for (int i = 0; i < num; i++) {
+				if (Case[i] != 0)
+					System.out.print(Case[i] + " ");
+
+			}
+
+			System.out.println();
+		}
+
+	}
+}
+
+
