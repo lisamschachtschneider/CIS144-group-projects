@@ -179,3 +179,44 @@ public class GroupProject5 {
 }
 
 
+Version 3~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class NoDupeNumbers {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        int array[] = new int[5];
+        int counter = 0;
+        
+        while(counter < array.length) {
+            System.out.printf("%nEnter a number between 10-100: %n");
+            int userInput = input.nextInt();
+            
+            if(userInput >= 10 && userInput <= 100) {
+                boolean duplicateNumber = false;
+                
+                for(int x = 0; x < counter; x++) {
+                    if(userInput == array[x]) {
+                        duplicateNumber = true;
+                    }
+                }
+                
+                if(!duplicateNumber) {
+                    array[counter] = userInput;
+                    counter++;
+                } else {
+                    System.out.printf("%d was already entered. Please enter another number.%n", userInput);
+                }
+                
+            } else {
+                System.out.printf("Please enter a number between 10-100: %n");
+            }
+            System.out.printf("The final array is: %s%n", Arrays.toString(array));
+        }
+
+    }
+}
