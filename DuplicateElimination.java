@@ -4,119 +4,102 @@ public class DuplicateElimination {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-	Scanner input = new Scanner(System.in);
-	int[] numbers = new int[3];
-	int count = 0;
-	int firstNumber=0;
-	int number = 0;
-	do
-	{
-		System.out.println("Enter a number between 10-100: ");
-		try
-		{
-			firstNumber=input.nextInt();
-		}
-		catch(InputMismatchException e)
-		{
-			//System.out.println(e);
-			System.out.println("Invalid Input");
-			input.next();
-		}
-	}
-	while(!(firstNumber>=10 && firstNumber<=100));
-	System.out.println(""+firstNumber);
-	do
-	{
-		System.out.println("Enter another number between 10-100: ");
-		try
-		{
-			number=input.nextInt();
-		}
-		catch(InputMismatchException e)
-		{
-			//System.out.println(e);
-			System.out.println("Invalid Input");
-			input.next();
-		}
-	}
-	while(!(number>=10 && number<=100));
-	
-	while(count<4)
-	{
-		count++;
+		int[] numbers = new int[3];
+		int count = 0;
+		int firstNumber = 0;
+		int number = 0;
 		boolean duplicate = false;
-		if(number != firstNumber)
+		
+		do
 		{
-			for(int i=0; i<numbers.length;i++)
+			System.out.println("Enter a number between 10-100: ");
+			firstNumber = getInput();
+		}
+		while (!(firstNumber >= 10 && firstNumber <= 100));
+		System.out.println("" + firstNumber);
+		do 
+		{
+			System.out.println("Enter another number between 10-100: ");
+			number = getInput();
+		} 
+		while (!(number >= 10 && number <= 100));
+		
+		while (count < 4) 
+		{
+			count++;
+			duplicate = false;
+			if (number != firstNumber) 
 			{
-				if(number == numbers[i])
+				for (int i = 0; i < numbers.length; i++) 
 				{
-					duplicate = true;
-				}
-			}
-			if(duplicate == false)
-			{
-				for(int i=0; i<numbers.length;i++)
-				{
-					if(numbers[i]!=0)
+					if (number == numbers[i]) 
 					{
-						System.out.printf("%d, ", numbers[i]);
+						duplicate = true;
 					}
 				}
-				System.out.print(firstNumber+", "+number+"\n");
-				if(count<4)
+				if (duplicate == false) 
 				{
-					numbers[count-1]=number;
+					System.out.print(printArray(numbers));
+					System.out.print(firstNumber + ", " + number + "\n");
+					if (count < 4) 
+					{
+						numbers[count - 1] = number;
+					}
 				}
 			}
-		}
-		if(duplicate == true || number == firstNumber)
-		{
-			System.out.println("Duplicate Number!");
-		}
-		if(count<4)
-		{
-			do
+			if (duplicate == true || number == firstNumber) 
 			{
-				System.out.println("Enter another number between 10-100: ");
-				try
+				System.out.println("Duplicate Number!");
+			}
+			if (count < 4) 
+			{
+				do 
 				{
-					number=input.nextInt();
-				}
-				catch(InputMismatchException e)
-				{
-					//System.out.println(e);
-					System.out.println("Invalid Input");
-					input.next();
-				}
-			}while(!(number>=10 && number<=100));
+					System.out.println("Enter another number between 10-100: ");
+					number = getInput();
+				} while (!(number >= 10 && number <= 100));
+			}
 		}
-	}
-	System.out.print("\nThe Numbers Enter are: "+firstNumber+", ");
-	for(int i=0;i<numbers.length;i++)
-	{
-		if(numbers[i] != 0)
+		System.out.print("\nThe Numbers Enter are: " + firstNumber + ", ");
+		System.out.print(printArray(numbers));
+		
+		if (duplicate == false) 
 		{
-			System.out.printf("%d, ", numbers[i]);
+			if (firstNumber != number) 
+			{
+				System.out.printf("%d", number);
+			}
 		}
-	}
-	boolean  duplicate2 = false;
-	for(int i=0;i<numbers.length;i++)
-	{
-		if(numbers[i] == number)
-		{
-			duplicate2 = true;
-		}
-	}
-	if(duplicate2 == false)
-	{
-		if(firstNumber != number)
-		{
-			System.out.printf("%d", number);
-		}
-	}
-	
 
+	}
+	public static int getInput()
+	{
+		Scanner input = new Scanner(System.in);
+		int number = 0;
+		try 
+		{
+			number = input.nextInt();
+		} 
+		catch (InputMismatchException e) 
+		{
+			// System.out.println(e);
+			System.out.println("Invalid Input");
+			input.next();
+		}
+		return number;
+	}
+	public static String printArray(int[] numbers)
+	{
+		String array = "";
+		for (int i = 0; i < numbers.length; i++) 
+		{
+			if (numbers[i] != 0) 
+			{
+				array += numbers[i]+ ", ";
+			}
+		}
+		return array;
+		
 	}
 
 }
