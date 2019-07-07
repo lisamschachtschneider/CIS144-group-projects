@@ -19,39 +19,32 @@ public class GroupProject5 {
 		while (num <= Case.length) {
 			System.out.println("Enter a number between 10 to 100! repeat number will not be shown: ");
 			value = input.nextInt();
-			// boolean was moved outside the if statement because I used it to print the last value later
 			boolean digit = false;
 			if ((value >= 10) && (value <= 100)) {
 				num++;
-//				System.out.printf("num increases to: %d%n", num);
 				for (int i = 0; i < Case.length; i++) {
 				    //loop through whole array to see if the value matches what we had before
-//				    System.out.printf("line 30, Case[i] is: %d %n", Case[i]);
-				    
 					if (Case[i] == value) {
 						digit = true;
 						System.out.println("The number you have entered was used before");
 					    // decrease num here to ensure if user enters multiple dupe numbers
 				        // they can still continue to enter numbers
-						num--;
+						// num--;
 					}
 				}
-			// added "&& num<5" because the array is size 4 and I wont be able to add the fifth number
 				if (!digit && num < 5) {
 					Case[count] = value;
 					count++;
 				}
 				//removed unnecessary dupe System.out.print statement
 			} else {
-				//System.out.println("The number you enter must be between 10 and 100");
-			    //no longer needed this statement because it starts at the beginning of the while block
-				value = input.nextInt();
+			    // Run this for the input to continue until we have 5 different numbers in the array
+			    // value = input.nextInt();
 			}
-			//Change the num to Case.length to avoid errors 
+
 			for (int i = 0; i < Case.length; i++) {
-//			    have if statement to avoid printing empty digits in array
 				if (Case[i] != 0) {
-					System.out.println(Case[i] + " ");
+					System.out.print(Case[i] + " ");
 				}
 			}
 			if(num == 5 && !digit) {
