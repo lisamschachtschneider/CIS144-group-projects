@@ -51,7 +51,7 @@ public class GroupProject5 {
 			for (int i = 0; i < Case.length; i++) {
 //			    have if statement to avoid printing empty digits in array
 				if (Case[i] != 0) {
-					System.out.println(Case[i] + " ");
+					System.out.printf(Case[i] + " ");
 				}
 			}
 			if(num == 5 && !digit) {
