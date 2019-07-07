@@ -1,222 +1,63 @@
 /*
-import java.util.*;
-
-public class DuplicateElimination {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-	Scanner input = new Scanner(System.in);
-	int[] numbers = new int[3];
-	int count = 0;
-	int firstNumber=0;
-	int number = 0;
-	do
-	{
-		System.out.println("Enter a number between 10-100: ");
-		try
-		{
-			firstNumber=input.nextInt();
-		}
-		catch(InputMismatchException e)
-		{
-			System.out.println("Invalid Input");
-			input.next();
-		}
-	}
-	while(!(firstNumber>=10 && firstNumber<=100));
-	System.out.println(""+firstNumber);
-	do
-	{
-		System.out.println("Enter another number between 10-100: ");
-		try
-		{
-			number=input.nextInt();
-		}
-		catch(InputMismatchException e)
-		{
-			System.out.println("Invalid Input");
-			input.next();
-		}
-	}
-	while(!(number>=10 && number<=100));
-	
-	while(count<4)
-	{
-		count++;
-		boolean duplicate = false;
-		if(number != firstNumber)
-		{
-			for(int i=0; i<numbers.length;i++)
-			{
-				if(number == numbers[i])
-				{
-					duplicate = true;
-				}
-			}
-			if(duplicate == false)
-			{
-				for(int i=0; i<numbers.length;i++)
-				{
-					if(numbers[i]!=0)
-					{
-						System.out.printf("%d, ", numbers[i]);
-					}
-				}
-				System.out.print(firstNumber+", "+number+"\n");
-				if(count<4)
-				{
-					numbers[count-1]=number;
-				}
-			}
-		}
-		if(duplicate == true || number == firstNumber)
-		{
-			System.out.println("Duplicate Number!");
-		}
-		if(count<4)
-		{
-			do
-			{
-				System.out.println("Enter another number between 10-100: ");
-				try
-				{
-					number=input.nextInt();
-				}
-				catch(InputMismatchException e)
-				{
-					System.out.println("Invalid Input");
-					input.next();
-				}
-			}while(!(number>=10 && number<=100));
-		}
-	}
-	System.out.print("\nThe Numbers Enter are: "+firstNumber+", ");
-	for(int i=0;i<numbers.length;i++)
-	{
-		if(numbers[i] != 0)
-		{
-			System.out.printf("%d, ", numbers[i]);
-		}
-	}
-	boolean  duplicate2 = false;
-	for(int i=0;i<numbers.length;i++)
-	{
-		if(numbers[i] == number)
-		{
-			duplicate2 = true;
-		}
-	}
-	if(duplicate2 == false)
-	{
-		if(firstNumber != number)
-		{
-			System.out.printf("%d", number);
-		}
-	}
-	
-
-	}
-
-}
-
-*/
-
-
--------------------------------------------------------------------------------------------------
-second version 
-//group project 5
-
+ * James Kwok
+ * Lisa Schachtschneider
+ * Raymundo Quinones
+ * Group Project 5
+ * 7.12 Duplicate Elimination
+ */
 import java.util.*;
 
 public class GroupProject5 {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 
-		int Case[] = new int[5];
+		int Case[] = new int[4];
 		int count = 0;
 		int num = 0;
 		int value = 0;
-		while (num < Case.length) {
+		
+		while (num <= Case.length) {
 			System.out.println("Enter a number between 10 to 100! repeat number will not be shown: ");
 			value = input.nextInt();
-
+			// boolean was moved outside the if statement because I used it to print the last value later
+			boolean digit = false;
 			if ((value >= 10) && (value <= 100)) {
-				boolean digit = false;
 				num++;
-
+//				System.out.printf("num increases to: %d%n", num);
 				for (int i = 0; i < Case.length; i++) {
-					if (Case[i] == value)
+				    //loop through whole array to see if the value matches what we had before
+//				    System.out.printf("line 30, Case[i] is: %d %n", Case[i]);
+				    
+					if (Case[i] == value) {
 						digit = true;
+						System.out.println("The number you have entered was used before");
+					    // decrease num here to ensure if user enters multiple dupe numbers
+				        // they can still continue to enter numbers
+						num--;
+					}
 				}
-
-				if (!digit) {
-
+			// added "&& num<5" because the array is size 4 and I wont be able to add the fifth number
+				if (!digit && num < 5) {
 					Case[count] = value;
-
 					count++;
-
 				}
-
-				else
-
-					System.out.println("the number you have entered was used before");
-
+				//removed unnecessary dupe System.out.print statement
+			} else {
+				//System.out.println("The number you enter must be between 10 and 100");
+			    //no longer needed this statement because it starts at the beginning of the while block
+				value = input.nextInt();
 			}
-
-			else
-				System.out.println("the number you enter must be between 10 and 100");
-
-			for (int i = 0; i < num; i++) {
-				if (Case[i] != 0)
-					System.out.print(Case[i] + " ");
-
+			//Change the num to Case.length to avoid errors 
+			for (int i = 0; i < Case.length; i++) {
+//			    have if statement to avoid printing empty digits in array
+				if (Case[i] != 0) {
+					System.out.println(Case[i] + " ");
+				}
 			}
-
+			if(num == 5 && !digit) {
+				System.out.print(value);
+			}
 			System.out.println();
 		}
-
 	}
-}
-
-
-Version 3~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
-
-import java.util.Arrays;
-import java.util.Scanner;
-
-public class NoDupeNumbers {
-
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        
-        int array[] = new int[5];
-        int counter = 0;
-        
-        while(counter < array.length) {
-            System.out.printf("%nEnter a number between 10-100: %n");
-            int userInput = input.nextInt();
-            
-            if(userInput >= 10 && userInput <= 100) {
-                boolean duplicateNumber = false;
-                
-                for(int x = 0; x < counter; x++) {
-                    if(userInput == array[x]) {
-                        duplicateNumber = true;
-                    }
-                }
-                
-                if(!duplicateNumber) {
-                    array[counter] = userInput;
-                    counter++;
-                } else {
-                    System.out.printf("%d was already entered. Please enter another number.%n", userInput);
-                }
-                
-            } else {
-                System.out.printf("Please enter a number between 10-100: %n");
-            }
-            System.out.printf("The final array is: %s%n", Arrays.toString(array));
-        }
-
-    }
 }
