@@ -1,0 +1,56 @@
+/*
+ * James Kwok
+ * Lisa Schachtschneider
+ * Raymundo Quinones
+ * Group Project 5
+ * 7.12 Duplicate Elimination
+ */
+import java.util.*;
+
+public class GroupProject5 {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+
+		int Case[] = new int[4];
+		int count = 0;
+		int num = 0;
+		int value = 0;
+		
+		while (num <= Case.length) {
+			System.out.println("Enter a number between 10 to 100! repeat number will not be shown: ");
+			value = input.nextInt();
+			boolean digit = false;
+			if ((value >= 10) && (value <= 100)) {
+				num++;
+				for (int i = 0; i < Case.length; i++) {
+				    //loop through whole array to see if the value matches what we had before
+					if (Case[i] == value) {
+						digit = true;
+						System.out.println("The number you have entered was used before");
+					    // decrease num here to ensure if user enters multiple dupe numbers
+				        // they can still continue to enter numbers
+						// num--;
+					}
+				}
+				if (!digit && num < 5) {
+					Case[count] = value;
+					count++;
+				}
+				//removed unnecessary dupe System.out.print statement
+			} else {
+			    // Run this for the input to continue until we have 5 different numbers in the array
+			    // value = input.nextInt();
+			}
+
+			for (int i = 0; i < Case.length; i++) {
+				if (Case[i] != 0) {
+					System.out.print(Case[i] + " ");
+				}
+			}
+			if(num == 5 && !digit) {
+				System.out.print(value);
+			}
+			System.out.println();
+		}
+	}
+}
