@@ -14,8 +14,6 @@ public class BasePlusCommissionEmployeeTest {
          new BasePlusCommissionEmployee(                
          "Bob", "Lewis", "333-33-3333", 5000, .04, 300);
       
-
-      
       // get base-salaried commission employee data
       System.out.println(
          "Employee information obtained by get methods:%n");

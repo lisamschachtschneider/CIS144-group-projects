@@ -61,15 +61,10 @@ public class BasePlusCommissionEmployee {
        return baseSalary;
    }
 
-   // calculate earnings
-//   @Override 
    public double earnings() {
        return getBaseSalary() + commissionEmployee.earnings();
    }
 
-   // return String representation of BasePlusCommissionEmployee
-//   @Override
-   // Remove override because we're not inheriting
    public String toString() {
       return String.format("%s %s%n%s: %.2f", "base-salaried",
               commissionEmployee.toString(), "base salary", getBaseSalary());   

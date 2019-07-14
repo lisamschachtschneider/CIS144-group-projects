@@ -78,7 +78,6 @@ public class CommissionEmployee {
    } 
 
    // return String representation of CommissionEmployee object
-   @Override 
    public String toString() {
       return String.format("%s: %s %s%n%s: %s%n%s: %.2f%n%s: %.2f", 
          "commission employee", getFirstName(), getLastName(), 
